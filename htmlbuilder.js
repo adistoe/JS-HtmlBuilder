@@ -133,6 +133,20 @@ HTMLBuilder.prototype.createHeadline = function(type, content, attributes) {
 };
 
 /**
+ * Create italic <i></i>
+ *
+ * @param {string} content - Content between the html opening and closing tag
+ * @param {string} attriubutes - Attribute array [[attribute, content], ...]
+ *
+ * @returns {object} - Created element
+ */
+HTMLBuilder.prototype.createI = function(content, attributes) {
+    var element = this.create('i', content, attributes);
+
+    return element;
+};
+
+/**
  * Create image <img>
  *
  * @param {string} source - Image source URL
