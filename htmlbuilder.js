@@ -223,6 +223,31 @@ HTMLBuilder.prototype.createLabel = function(content, forAttr, attributes) {
 };
 
 /**
+ * Create option for a select <option></option>
+ *
+ * @param {string} value - Option value
+ * @param {string} content - Option text
+ * @param {string} attriubutes - Attribute array [[attribute, content], ...]
+ *
+ * @returns {object} - Created element
+ */
+HTMLBuilder.prototype.createOption = function(value, content, attributes) {
+    // Check if a value is set (So it has not to be given in the attributes anymore)
+    if (value) {
+        if (!attributes) {
+            attributes = [];
+        }
+
+        // Add type at the beginning of the attributes array
+        attributes.unshift(['value', value]);
+    }
+
+    var element = this.create('option', content, attributes);
+
+    return element;
+};
+
+/**
  * Create paragraph <p></p>
  *
  * @param {string} content - Content between the html opening and closing tag
@@ -232,6 +257,31 @@ HTMLBuilder.prototype.createLabel = function(content, forAttr, attributes) {
  */
 HTMLBuilder.prototype.createParagraph = function(content, attributes) {
     var element = this.create('p', content, attributes);
+
+    return element;
+};
+
+/**
+ * Create select <select></select>
+ *
+ * @param {string} options - Select options [[value, text], ...]
+ * @param {string} attriubutes - Attribute array [[attribute, content], ...]
+ *
+ * @returns {object} - Created element
+ */
+HTMLBuilder.prototype.createSelect = function(options, attributes) {
+    var element = this.create('select', null, attributes);
+
+    // Check if at least one option is set
+    if (options) {
+        // Add options
+        var key;
+        for (key in options) {
+            var option = this.createOption(options[key][0], options[key][1], options[key][2]);
+
+            element.appendChild(option);
+        }
+    }
 
     return element;
 };
