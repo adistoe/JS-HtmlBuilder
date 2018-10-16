@@ -23,7 +23,12 @@ HTMLBuilder.prototype.create = function(type, content, attributes) {
 
     var key;
     for (key in attributes) {
-        element.setAttribute(attributes[key][0], attributes[key][1]);
+        if (attributes[key][0]) {
+            element.setAttribute(
+                attributes[key][0],
+                attributes[key][1] ? attributes[key][1] : ''
+            );
+        }
     }
 
     if (content) {
@@ -58,13 +63,13 @@ HTMLBuilder.prototype.createAnchor = function(href, content, attributes) {
 /**
  * Create button <button></button>
  *
- * @param {string} text - Buttontext
+ * @param {string} content - Buttontext
  * @param {string} attriubutes - Attribute array [[attribute, content], ...]
  *
  * @returns {object} - Created element
  */
-HTMLBuilder.prototype.createButton = function(text, attributes) {
-    var element = this.create('button', text, attributes);
+HTMLBuilder.prototype.createButton = function(content, attributes) {
+    var element = this.create('button', content, attributes);
 
     return element;
 };
