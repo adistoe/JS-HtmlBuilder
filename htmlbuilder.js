@@ -48,12 +48,14 @@ HTMLBuilder.prototype.create = function(type, content, attributes) {
  * @returns {object} - Created element
  */
 HTMLBuilder.prototype.createAnchor = function(href, content, attributes) {
-    if (!attributes) {
-        attributes = [];
-    }
-
     // Add href at the beginning of the attributes array
-    attributes.unshift(['href', href]);
+    if (href) {
+        if (!attributes) {
+            attributes = [];
+        }
+        
+        attributes.unshift(['href', href]);
+    }
 
     var element = this.create('a', content, attributes);
 
@@ -89,9 +91,9 @@ HTMLBuilder.prototype.createDiv = function(content, attributes) {
 };
 
 /**
- * Create headline <h1></h1> - <h6></h6>
+ * Create headline <h1></h1> to <h6></h6>
  *
- * @param {string} type - Headline type (h1 - h6)
+ * @param {string} type - Headline type (h1 to h6)
  * @param {string} content - Content between the html opening and closing tag
  * @param {string} attriubutes - Attribute array [[attribute, content], ...]
  *
@@ -145,7 +147,7 @@ HTMLBuilder.prototype.createHeadline = function(type, content, attributes) {
  *
  * @returns {object} - Created element
  */
-HTMLBuilder.prototype.createI = function(content, attributes) {
+HTMLBuilder.prototype.createItalic = function(content, attributes) {
     var element = this.create('i', content, attributes);
 
     return element;
@@ -284,4 +286,43 @@ HTMLBuilder.prototype.createSelect = function(options, attributes) {
     }
 
     return element;
+};
+
+/////////////////////////////////////
+////////// ALIAS FUNCTIONS //////////
+/////////////////////////////////////
+
+/**
+ * "createAnchor" (<a></a>)
+ */
+HTMLBuilder.prototype.createA = function(href, content, attributes) {
+    return this.createAnchor(href, content, attributes);
+};
+
+/**
+ * "createHeadline" (<h1></h1> to <h6></h6>)
+ */
+HTMLBuilder.prototype.createH = function(type, content, attributes) {
+    return this.createHeadline(type, content, attributes);
+};
+
+/**
+ * "createItalic" (<i></i>)
+ */
+HTMLBuilder.prototype.createI = function(content, attributes) {
+    return this.createItalic(content, attributes);
+};
+
+/**
+ * "createImage" (<img>)
+ */
+HTMLBuilder.prototype.createImg = function(source, alt, attributes) {
+    return this.createImage(source, alt, attributes);
+};
+
+/**
+ * "createParagraph" (<p></p>)
+ */
+HTMLBuilder.prototype.createP = function(content, attributes) {
+    return this.createParagraph(content, attributes);
 };
