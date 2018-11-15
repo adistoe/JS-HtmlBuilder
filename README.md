@@ -41,7 +41,7 @@ The way the attributes would be passed is always like described above.
 
 ### Supported tags
 Currently the following tags are supported:
-a, button, div, h1, h2, h3, h4, h5, h6, i, image, input, label, option, p, select
+a, button, div, h1, h2, h3, h4, h5, h6, i, image, input, label, option, p, select, table, tbody, td, tfoot, thead, tr
 
 ### Tags and their standard / special parameters
 
@@ -143,3 +143,16 @@ Output element:
 	<option selected=""></option>
 </select>
 ```
+
+#### Table "&lt;table&gt;&lt;/table&gt;"
+coming soon...
+#### Table body "&lt;tbody&gt;&lt;/tbody&gt;"
+coming soon...
+#### Table cell "&lt;td&gt;&lt;/td&gt;"
+coming soon...
+#### Table foot "&lt;tfoot&gt;&lt;/tfoot&gt;"
+coming soon...
+#### Table head "&lt;thead&gt;&lt;/thead&gt;"
+coming soon...
+#### Table row "&lt;tr&gt;&lt;/tr&gt;"
+coming soon...
