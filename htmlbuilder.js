@@ -288,6 +288,96 @@ HTMLBuilder.prototype.createSelect = function(options, attributes) {
     return element;
 };
 
+/**
+ * Create table <table></table>
+ *
+ * @param {string} parts - Table parts (thead, tbody, tfoot) (optional containments: rows and cells)
+ * @param {string} attriubutes - Attribute array [[attribute, content], ...]
+ *
+ * @returns {object} - Created element
+ */
+HTMLBuilder.prototype.createTable = function(parts, attributes) {
+    var element = this.create('table', null, attributes);
+
+    // Check if at least one part is set
+    if (parts) {
+        // Add parts
+        var pkey;
+        for (pkey in parts) {
+            var part = this.createTablePart(parts[pkey][0], parts[pkey][1], parts[pkey][2]);
+
+            element.appendChild(part);
+        }
+    }
+
+    return element;
+};
+
+/**
+ * Create table cell <td></td>
+ *
+ * @param {string} content - Content between the html opening and closing tag
+ * @param {string} attriubutes - Attribute array [[attribute, content], ...]
+ *
+ * @returns {object} - Created element
+ */
+HTMLBuilder.prototype.createTableCell = function(content, attributes) {
+    var element = this.create('td', content, attributes);
+
+    return element;
+};
+
+/**
+ * Create table part <thead></thead>, <tbody></tbody> or <tfoot></tfoot>
+ *
+ * @param {string} type - Part type (thead, tbody, tfoot)
+ * @param {string} rows - Table rows (optional containments: cells)
+ * @param {string} attriubutes - Attribute array [[attribute, content], ...]
+ *
+ * @returns {object} - Created element
+ */
+HTMLBuilder.prototype.createTablePart = function(type, rows, attributes) {
+    var element = this.create(type, null, attributes);
+
+    // Check if at least one row is set
+    if (rows) {
+        // Add rows
+        var rkey;
+        for (rkey in rows) {
+            var row = this.createTableRow(rows[rkey][0], rows[rkey][1]);
+
+            element.appendChild(row);
+        }
+    }
+
+    return element;
+};
+
+/**
+ * Create table row <tr></tr>
+ *
+ * @param {string} cells - Table cells
+ * @param {string} attriubutes - Attribute array [[attribute, content], ...]
+ *
+ * @returns {object} - Created element
+ */
+HTMLBuilder.prototype.createTableRow = function(cells, attributes) {
+    var element = this.create('tr', null, attributes);
+
+    // Check if at least one cell is set
+    if (cells) {
+        // Add cells
+        var key;
+        for (key in cells) {
+            var cell = this.createTableCell(cells[key][0], cells[key][1]);
+
+            element.appendChild(cell);
+        }
+    }
+
+    return element;
+};
+
 /////////////////////////////////////
 ////////// ALIAS FUNCTIONS //////////
 /////////////////////////////////////
@@ -325,4 +415,39 @@ HTMLBuilder.prototype.createImg = function(source, alt, attributes) {
  */
 HTMLBuilder.prototype.createP = function(content, attributes) {
     return this.createParagraph(content, attributes);
+};
+
+/**
+ * "createTablePart" with type tbody (<tbody></tbody>)
+ */
+HTMLBuilder.prototype.createTbody = function(content, attributes) {
+    return this.createTablePart('tbody', content, attributes);
+};
+
+/**
+ * "createTableCell" (<td></td>)
+ */
+HTMLBuilder.prototype.createTd = function(content, attributes) {
+    return this.createTableCell(content, attributes);
+};
+
+/**
+ * "createTablePart" with type tfoot (<tfoot></tfoot>)
+ */
+HTMLBuilder.prototype.createTfoot = function(rows, attributes) {
+    return this.createTablePart('tfoot', rows, attributes);
+};
+
+/**
+ * "createTablePart" with type thead (<thead></thead>)
+ */
+HTMLBuilder.prototype.createThead = function(rows, attributes) {
+    return this.createTablePart('thead', rows, attributes);
+};
+
+/**
+ * "createTableRow" (<tr></tr>)
+ */
+HTMLBuilder.prototype.createTr = function(cells, attributes) {
+    return this.createTableRow(cells, attributes);
 };
