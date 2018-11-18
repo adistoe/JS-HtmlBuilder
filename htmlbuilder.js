@@ -328,6 +328,20 @@ HTMLBuilder.prototype.createSelect = function(options, attributes) {
 };
 
 /**
+ * Create span <span></span>
+ *
+ * @param {string} content - Content between the html opening and closing tag
+ * @param {string} attriubutes - Attribute array [[attribute, content], ...]
+ *
+ * @returns {object} - Created element
+ */
+HTMLBuilder.prototype.createSpan = function(content, attributes) {
+    var element = this.create('span', content, attributes);
+
+    return element;
+};
+
+/**
  * Create table <table></table>
  *
  * @param {string} parts - Table parts (thead, tbody, tfoot) (optional containments: rows and cells)
