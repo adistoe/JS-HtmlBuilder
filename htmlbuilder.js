@@ -232,7 +232,7 @@ HTMLBuilder.prototype.createLabel = function(content, forAttr, attributes) {
  *
  * @returns {object} - Created element
  */
-HTMLBuilder.prototype.createLi = function(content, attributes) {
+HTMLBuilder.prototype.createListElement = function(content, attributes) {
     var element = this.create('li', content, attributes);
 
     return element;
@@ -279,7 +279,7 @@ HTMLBuilder.prototype.createOrderedList = function(listElements, attributes) {
         // Add list elements
         var key;
         for (key in listElements) {
-            var listElement = this.createLi(listElements[key][0], listElements[key][1]);
+            var listElement = this.createListElement(listElements[key][0], listElements[key][1]);
 
             element.appendChild(listElement);
         }
@@ -433,7 +433,7 @@ HTMLBuilder.prototype.createUnorderedList = function(listElements, attributes) {
         // Add list elements
         var key;
         for (key in listElements) {
-            var listElement = this.createLi(listElements[key][0], listElements[key][1]);
+            var listElement = this.createListElement(listElements[key][0], listElements[key][1]);
 
             element.appendChild(listElement);
         }
@@ -472,6 +472,13 @@ HTMLBuilder.prototype.createI = function(content, attributes) {
  */
 HTMLBuilder.prototype.createImg = function(source, alt, attributes) {
     return this.createImage(source, alt, attributes);
+};
+
+/**
+ * "createListElement" (<li>)
+ */
+HTMLBuilder.prototype.createLi = function(content, attributes) {
+    return this.createListElement(content, attributes);
 };
 
 /**
