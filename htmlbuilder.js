@@ -225,6 +225,20 @@ HTMLBuilder.prototype.createLabel = function(content, forAttr, attributes) {
 };
 
 /**
+ * Create li <li></li>
+ *
+ * @param {string} content - Content between the html opening and closing tag
+ * @param {string} attriubutes - Attribute array [[attribute, content], ...]
+ *
+ * @returns {object} - Created element
+ */
+HTMLBuilder.prototype.createLi = function(content, attributes) {
+    var element = this.create('li', content, attributes);
+
+    return element;
+};
+
+/**
  * Create option for a select <option></option>
  *
  * @param {string} value - Option value
@@ -245,6 +259,31 @@ HTMLBuilder.prototype.createOption = function(value, content, attributes) {
     }
 
     var element = this.create('option', content, attributes);
+
+    return element;
+};
+
+/**
+ * Create ordered list <ol></ol>
+ *
+ * @param {string} listElements - List elements
+ * @param {string} attriubutes - Attribute array [[attribute, content], ...]
+ *
+ * @returns {object} - Created element
+ */
+HTMLBuilder.prototype.createOrderedList = function(listElements, attributes) {
+    var element = this.create('ol', null, attributes);
+
+    // Check if at least one list element is set
+    if (listElements) {
+        // Add list elements
+        var key;
+        for (key in listElements) {
+            var listElement = this.createLi(listElements[key][0], listElements[key][1]);
+
+            element.appendChild(listElement);
+        }
+    }
 
     return element;
 };
@@ -378,6 +417,31 @@ HTMLBuilder.prototype.createTableRow = function(cells, attributes) {
     return element;
 };
 
+/**
+ * Create unordered list <ul></ul>
+ *
+ * @param {string} listElements - List elements
+ * @param {string} attriubutes - Attribute array [[attribute, content], ...]
+ *
+ * @returns {object} - Created element
+ */
+HTMLBuilder.prototype.createUnorderedList = function(listElements, attributes) {
+    var element = this.create('ul', null, attributes);
+
+    // Check if at least one list element is set
+    if (listElements) {
+        // Add list elements
+        var key;
+        for (key in listElements) {
+            var listElement = this.createLi(listElements[key][0], listElements[key][1]);
+
+            element.appendChild(listElement);
+        }
+    }
+
+    return element;
+};
+
 /////////////////////////////////////
 ////////// ALIAS FUNCTIONS //////////
 /////////////////////////////////////
@@ -408,6 +472,13 @@ HTMLBuilder.prototype.createI = function(content, attributes) {
  */
 HTMLBuilder.prototype.createImg = function(source, alt, attributes) {
     return this.createImage(source, alt, attributes);
+};
+
+/**
+ * "createOrderedList" (<ol></ol>)
+ */
+HTMLBuilder.prototype.createOl = function(listElements, attributes) {
+    return this.createOrderedList(listElements, attributes);
 };
 
 /**
@@ -450,4 +521,11 @@ HTMLBuilder.prototype.createThead = function(rows, attributes) {
  */
 HTMLBuilder.prototype.createTr = function(cells, attributes) {
     return this.createTableRow(cells, attributes);
+};
+
+/**
+ * "createUnorderedList" (<ul></ul>)
+ */
+HTMLBuilder.prototype.createUl = function(listElements, attributes) {
+    return this.createUnorderedList(listElements, attributes);
 };
