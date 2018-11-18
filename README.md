@@ -41,7 +41,7 @@ The way the attributes would be passed is always like described above.
 
 ### Supported tags
 Currently the following tags are supported:
-a, button, div, h1, h2, h3, h4, h5, h6, i, image, input, label, option, p, select, table, tbody, td, tfoot, thead, tr
+a, button, div, h1, h2, h3, h4, h5, h6, i, image, input, label, li, ol, option, p, select, table, tbody, td, tfoot, thead, tr, ul
 
 ### Tags and their standard / special parameters
 
@@ -112,6 +112,12 @@ Output element:
 <label for="my-textfield">MyLabel</label>
 ```
 
+#### List element "&lt;li&gt;&lt;/li&gt;"
+coming soon...
+
+#### Ordered list "&lt;ol&gt;&lt;/ol&gt;"
+coming soon...
+
 #### Option "&lt;option&gt;&lt;/option&gt;"
 This function is to create options for a "&lt;select&gt;&lt;/select&gt;"-input if the options are not directly created in the "createSelect"-function.
 ```javascript
@@ -155,4 +161,6 @@ coming soon...
 #### Table head "&lt;thead&gt;&lt;/thead&gt;"
 coming soon...
 #### Table row "&lt;tr&gt;&lt;/tr&gt;"
+coming soon...
+#### Unordered list "&lt;ul&gt;&lt;/ul&gt;"
 coming soon...
