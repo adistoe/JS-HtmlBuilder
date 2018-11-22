@@ -468,10 +468,45 @@ HTMLBuilder.prototype.createA = function(href, content, attributes) {
 };
 
 /**
- * "createHeadline" (<h1></h1> to <h6></h6>)
+ * "createHeadline" with type h1 (<h1></h1>)
  */
-HTMLBuilder.prototype.createH = function(type, content, attributes) {
-    return this.createHeadline(type, content, attributes);
+HTMLBuilder.prototype.createH1 = function(content, attributes) {
+    return this.createHeadline('h1', content, attributes);
+};
+
+/**
+ * "createHeadline" with type h2 (<h2></h2>)
+ */
+HTMLBuilder.prototype.createH2 = function(content, attributes) {
+    return this.createHeadline('h2', content, attributes);
+};
+
+/**
+ * "createHeadline" with type h3 (<h3></h3>)
+ */
+HTMLBuilder.prototype.createH3 = function(content, attributes) {
+    return this.createHeadline('h3', content, attributes);
+};
+
+/**
+ * "createHeadline" with type h4 (<h4></h4>)
+ */
+HTMLBuilder.prototype.createH4 = function(content, attributes) {
+    return this.createHeadline('h4', content, attributes);
+};
+
+/**
+ * "createHeadline" with type h5 (<h5></h5>)
+ */
+HTMLBuilder.prototype.createH5 = function(content, attributes) {
+    return this.createHeadline('h5', content, attributes);
+};
+
+/**
+ * "createHeadline" with type h6 (<h6></h6>)
+ */
+HTMLBuilder.prototype.createH6 = function(content, attributes) {
+    return this.createHeadline('h6', content, attributes);
 };
 
 /**
