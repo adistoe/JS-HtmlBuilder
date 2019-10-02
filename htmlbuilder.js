@@ -91,6 +91,19 @@ HTMLBuilder.prototype.createDiv = function(content, attributes) {
 };
 
 /**
+ * Create form <form>
+ *
+ * @param {string} attriubutes - Attribute array [[attribute, content], ...]
+ *
+ * @returns {object} - Created element
+ */
+HTMLBuilder.prototype.createForm = function(attributes) {
+    var element = this.create('form', null, attributes);
+
+    return element;
+};
+
+/**
  * Create headline <h1></h1> to <h6></h6>
  *
  * @param {string} type - Headline type (h1 to h6)
