@@ -91,6 +91,19 @@ HTMLBuilder.prototype.createDiv = function(content, attributes) {
 };
 
 /**
+ * Create fieldset <fieldset>
+ *
+ * @param {string} attriubutes - Attribute array [[attribute, content], ...]
+ *
+ * @returns {object} - Created element
+ */
+HTMLBuilder.prototype.createFieldset = function(attributes) {
+    var element = this.create('fieldset', null, attributes);
+
+    return element;
+};
+
+/**
  * Create form <form>
  *
  * @param {string} attriubutes - Attribute array [[attribute, content], ...]
