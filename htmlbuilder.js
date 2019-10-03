@@ -166,6 +166,19 @@ HTMLBuilder.prototype.createHeadline = function(type, content, attributes) {
 };
 
 /**
+ * Create horizontal line <hr>
+ *
+ * @param {string} attriubutes - Attribute array [[attribute, content], ...]
+ *
+ * @returns {object} - Created element
+ */
+HTMLBuilder.prototype.createHorizontalLine = function(attributes) {
+    var element = this.create('hr', null, attributes);
+
+    return element;
+};
+
+/**
  * Create italic <i></i>
  *
  * @param {string} content - Content between the html opening and closing tag
@@ -533,6 +546,13 @@ HTMLBuilder.prototype.createH5 = function(content, attributes) {
  */
 HTMLBuilder.prototype.createH6 = function(content, attributes) {
     return this.createHeadline('h6', content, attributes);
+};
+
+/**
+ * "createHorizontalLine" (<i></i>)
+ */
+HTMLBuilder.prototype.createHr = function(attributes) {
+    return this.createHorizontalLine(attributes);
 };
 
 /**
